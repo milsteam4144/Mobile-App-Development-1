@@ -1,0 +1,119 @@
+<!--Mallory Milstead
+	WEB-151-1B01
+	7/6/2018
+	Find the Buried Treasure - Attempting Gold -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Find the buried treasure!</title>
+</head>
+
+<body>
+<h1 id="heading">Find the buried treasure!</h1>
+<!--This is the image that will act as the map-->
+<img id="map" width=969 height=749
+  src="https://www.timvandevall.com/wp-content/uploads/Pirate-Treasure-Map.png">
+  <!--This is where the text will display to tell the user if their click is close to the treasure-->
+  <p id="distance"></p>
+
+  <!--This is where the text will display ti tell the user which click they are on -->
+  <p id="clickDisplay"></p>
+
+  <!--This button allows player to reset the game if they have gotten a GAME OVER-->
+  <button type="button" onclick="reset()">RESET GAME</button>
+  <!--Allows access to jquery-->
+  <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+  <script>
+
+  //This function uses the button element to restart game by reloading the page
+  var reset = function () {
+    location.reload();
+  };
+  //Get a random number from 0 to size.
+  var getRandomNumber = function (size) {
+    return Math.floor(Math.random() * size);
+	};
+
+  //Create a function to measure the distance between the random coordinates and where the player clicks
+  var getDistance = function (event, target) {
+  //Find the difference between the coordinate where the player clicked and the coordinate of the target (treasure)
+  var diffX = event.offsetX - target.x;
+  var diffY = event.offsetY - target.y;
+  //Use the pythagorean theorem to calculate the difference- find square root of (diffX)squared plus (diffY)squared
+  return Math.sqrt((diffX * diffX) + (diffY * diffY));
+  };
+
+  //Create a function that displays a hint telling the player how close they are to the target
+	  var getDistanceHint = function (distance) {
+	  if (distance < 10) {
+	  return "Boiling hot!";
+	  } else if (distance < 20) {
+	  return "Really hot";
+	  } else if (distance < 40) {
+	  return "Hot";
+	  } else if (distance < 80) {
+	  return "Warm";
+	  } else if (distance < 160) {
+	  return "Cold";
+	  } else if (distance < 320) {
+	  return "Really cold";
+	  } else {
+	  return "Freezing!";
+	  }
+	  };
+
+	//Set the limits of the width and height
+	var width = 969;
+	var height = 749;
+	//Initialize a variable to hold the number of clicks
+	var clicks = 0;
+  //Initialize a variable to indicate the maximum number of clicks allowed before GAME OVER
+	var maxClicks = 40;
+
+
+
+	//Call the function to get random "x" and "y" coordinates and assign the results to the variable "target".
+	var target = {
+	  x: getRandomNumber(width),
+	  y: getRandomNumber(height)
+	  };
+
+	  //When the player clicks a spot on the map... This is a click event
+	  $("#map").click(function (event) {
+
+    //If the current value of maxClicks is less than 40
+    if (clicks < maxClicks) {
+
+    //Increment the "clicks" variable by 1
+	  clicks++;
+
+	  //Get the difference between click event and target
+	  var distance = getDistance(event, target);
+
+	  //Convert distance to a hint
+	  var distanceHint = getDistanceHint(distance);
+
+	  //Display the hint in the distance paragraph element
+	  $("#distance").text(distanceHint);
+    //Display the number of the current clicks
+    $("#clickDisplay").text("You are on click number: " + clicks);
+
+	  //If the click is close enough, tell the player they won
+	  if (distance < 8) {
+	  alert("Found the treasure in " + clicks + " clicks!");
+	  }
+    }
+    else {
+        alert("You have exceeded the maximum number of clicks");
+        alert("GAME OVER!");
+      }
+  });
+
+
+
+  </script>
+
+  </body>
+  </html>
