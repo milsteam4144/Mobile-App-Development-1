@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bee Animation</title>
+</head>
+
+<body>
+  <canvas id ="canvas" width = "200" height="200"></canvas>
+
+  <script>
+  //Create the canvas element
+  var canvas = document.getElementById("canvas");
+  //Call the getContext method with the 2d parameter
+  var ctx = canvas.getContext("2d");
+
+  //Create a function to draw circles
+  var circle = function (x, y, radius, fillCircle){
+    ctx.beginPath();
+    ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+    if (fillCircle){
+      ctx.fill();
+    }
+    else{ctx.stroke();}
+  };
+
+  //Create a function to draw a Bee
+  var drawBee = function (x, y){
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = "Black";
+    ctx.fillStyle = "Gold";
+
+    circle(x, y, 8, true);
+    circle(x, y, 8, false);
+    circle(x - 5, y - 11, 5, false);
+    circle(x + 5, y - 11, 5, false);
+    circle(x - 2, y - 1, 2, false);
+    circle(x + 2, y - 1, 2, false);
+  };
+
+  //Create an update function to change the bee's x and y coordinates
+  var update = function(coordinate){
+    var offset = Math.random() * 4 - 2;
+    coordinate += offset;
+
+    if (coordinate > 200){
+      coordinate = 200;
+    }
+
+    if (coordinate < 0){
+      coordinate = 0;
+    }
+
+    return coordinate;
+  };
+
+  //Write the code to animate the bee using the functions
+  var x = 100;
+  var y = 100;
+
+  setInterval(function () {
+    ctx.clearRect(0, 0, 200, 200);
+
+    drawBee(x, y);
+    x = update(x);
+    y = update(y);
+
+    ctx.strokeRect(0, 0, 200, 200);
+  }, 30);
+  </script>
+</body>
+</html>
