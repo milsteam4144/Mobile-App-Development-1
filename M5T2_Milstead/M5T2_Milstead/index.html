@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JQuery for page Animation</title>
+</head>
+
+<body>
+  <!--Create a heading using JQuery-->
+  <h1 id="heading">JQuery is an awesome JavaScript library!</h1>
+
+  <p id="first-paragraph">JQuery was invented by John Resig.
+    The first release was in January 2006 at BarCamp NYC.
+    Today there is a team of developers working on jQuery.</p>
+
+  <!--Load the jQuery library-->
+  <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+
+  <script>
+  //When the mouse moves, the h1 element, heading, follows the mouse
+  $("html").mousemove(function (event) {
+  $("#heading").offset({
+    left: event.pageX,
+    top: event.pageY
+  });
+});
+
+//Use a click event to make the paragraph element follow mouse clicks
+$("html").click(function (event) {
+  $("#first-paragraph").offset({
+    left: event.pageX,
+    top: event.pageY
+  });
+});
+</script>
+
+</body>
+</html>
