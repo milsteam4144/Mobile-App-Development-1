@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Canvas</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="200" height="200"></canvas>
+
+    <script>
+	// M4LAB_Template
+	// WEB 151
+	// Mallory Milstead
+	
+	
+	// get the canvas
+    var canvas = document.getElementById("canvas");
+	// get the context as 2d
+    var ctx = canvas.getContext("2d");
+	
+	//Create a function to draw circles
+	var circle = function(x, y, radius, fillCircle){
+	  ctx.beginPath();
+	  ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+	  //If loop to control the fillCircle argument.
+	  if (fillCircle === true){
+	    ctx.fill();
+	    }
+	  else if (fillCircle === false){
+	    ctx.stroke();
+	    }
+	};
+
+	//Set the line width
+	ctx.lineWidth = 4;
+
+	//Draw the head
+	circle(50, 50, 25, false);
+
+	//Draw the eyes
+	circle(40, 45, 5, true);
+	circle(60, 45, 5, true);
+
+	//Draw the nose
+	ctx.fillStyle = "Orange";
+	circle(50, 53, 5, true);
+
+	//Draw the body
+	circle(50, 115, 40, false);
+
+	//Draw the buttons
+	ctx.fillStyle = "Black";
+	circle(50, 95, 5, true);
+	circle(50, 115, 5, true);
+	circle(50, 135, 5, true);
+
+
+	
+	
+	
+
+	
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Canvas</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+
+    <script>
+	// M4LAB_Template
+	// WEB 151
+	// Mallory Milstead
+	
+	
+	// get the canvas
+    var canvas = document.getElementById("canvas");
+	// get the context as 2d
+    var ctx = canvas.getContext("2d");
+	
+	//Create a function to draw/connect lines between the coordinates given in the array
+	var drawPoints = function(points) {
+	//Move the virtual pen to the first set of coordinates without drawing a line
+	ctx.moveTo([i][0], [i][1]);
+	//For each nested group of coordinate in the array...
+	for (var i = 0; i< points.length; i++){
+	  //Assign the first number in the coordinate to a variable
+	  var xCoord = points[i][0];
+	  //Assign the second number in the coordinate to a variable
+	  var yCoord = points[i][1];
+	  //Draw a line to the coordinates referenced by the variable
+	  ctx.lineTo(xCoord, yCoord);
+	 
+	  }
+	  };
+	  
+	  //Create two arrays of different coordinates
+	  var myPoints = [[50, 50], [50, 100], [100, 100], [100, 50], [50, 50]];
+	  var mysteryPoints = [[50, 50], [50,100], [25, 120], [100, 50], [70,90], [100, 90], [70,120]];
+	  //Assign a width to the line
+	  ctx.lineWidth = 5;
+	  //Begin the path
+	  ctx.beginPath();
+	  drawPoints(myPoints);
+	  drawPoints(mysteryPoints);
+	  //Call the stroke method to see the lines on the screen
+	  ctx.stroke();
+	  
+	
+	
+
+	
+	
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Canvas</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="200" height="200"></canvas>
+
+    <script>
+	// M4LAB_Template
+	// WEB 151
+	// Mallory Milstead
+	
+	
+	// get the canvas
+    var canvas = document.getElementById("canvas");
+	// get the context as 2d
+    var ctx = canvas.getContext("2d");
+	
+    	//Change the fill to an aqua color
+	ctx.fillStyle ="Aqua";
+	//Draw the rectangle
+	ctx.fillRect(0, 0, 50, 100)
+	//Change the fill to an olive color
+	ctx.fillStyle = "Olive";
+	//Draw the rectangle
+	ctx.fillRect(50, 0, 50, 100)
+	//Change the fill to a deep blue
+	ctx.fillStyle = "MidnightBlue";
+	//Draw the rectangle
+	ctx.fillRect(100, 0, 50, 100)
+	
+
+	
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Canvas</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="200" height="200"></canvas>
+
+    <script>
+	// M4LAB_Template
+	// WEB 151
+	// Mallory Milstead
+	
+	
+	// get the canvas
+    var canvas = document.getElementById("canvas");
+	// get the context as 2d
+    var ctx = canvas.getContext("2d");
+	
+	//Draw the head
+	ctx.lineWidth = 4;
+	ctx.strokeRect(30, 10, 20, 20)
+	
+	//Draw the body
+	ctx.beginPath();
+	ctx.moveTo(39.5, 30)
+	ctx.lineTo(39.5, 75)
+	
+	//Draw the legs
+	ctx.lineTo(28.5, 120)
+	ctx.moveTo(39.5, 75)
+	ctx.lineTo(50.5, 120)
+
+	//Draw the arms
+	ctx.moveTo(39.5, 65)
+	ctx.lineTo(20.5, 30)
+	ctx.moveTo(39.5, 65)
+	ctx.lineTo(58.5, 30)
+
+	//Draw the lines
+	ctx.stroke();
+	
+	
+
+	
+    </script>
+</body>
+</html>

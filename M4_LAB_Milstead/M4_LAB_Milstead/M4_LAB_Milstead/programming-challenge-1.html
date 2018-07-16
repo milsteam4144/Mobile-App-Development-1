@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Canvas</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+
+    <script>
+	// M4LAB_Template
+	// WEB 151
+	// Mallory Milstead
+	
+	
+	// get the canvas
+    var canvas = document.getElementById("canvas");
+	// get the context as 2d
+    var ctx = canvas.getContext("2d");
+	
+	//Create a function to draw circles
+	var circle = function(x, y, radius, fillCircle){
+	  ctx.beginPath();
+	  ctx.arc(x, y, radius, 0, Math.PI * 2, false);
+	  //If loop to control the fillCircle argument
+	  if (fillCircle === true){
+	    ctx.fill();
+	    }
+	  else if (fillCircle === false){
+	    ctx.stroke();
+	    }
+	};
+
+	var drawSnowman = function (x, y){
+		//Set the line width
+	ctx.lineWidth = 4;
+
+	//Draw the head
+	circle(x, y, 25, false);
+
+	//Draw the eyes
+	circle(x-10, y-5, 5, true);
+	circle(x+10, y-5, 5, true);
+
+	//Draw the nose
+	ctx.fillStyle = "Orange";
+	circle(x, y+3, 5, true);
+
+	//Draw the body
+	circle(x, y+65, 40, false);
+
+	//Draw the buttons
+	ctx.fillStyle = "Black";
+	circle(x, y+45, 5, true);
+	circle(x, y+65, 5, true);
+	circle(x, y+85, 5, true);
+	};
+
+	//Draw a snowman anywhere you'd like by passing the arguments for the x and y coordinates
+	drawSnowman(100, 100);
+
+
+	
+	
+	
+
+	
+    </script>
+</body>
+</html>

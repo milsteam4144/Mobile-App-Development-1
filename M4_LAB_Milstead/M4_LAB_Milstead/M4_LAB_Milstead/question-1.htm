@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Canvas</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="200" height="200"></canvas>
+
+    <script>
+	// M4LAB_Template
+	// WEB 151
+	// Mallory Milstead
+	
+	
+	// get the canvas
+    var canvas = document.getElementById("canvas");
+	// get the context as 2d
+    var ctx = canvas.getContext("2d");
+	
+    
+	//Draw the little robot
+	//Create the arms.
+	ctx.fillRect(0,70,150,10)
+	//Create the neck.
+	ctx.fillRect(70, 50, 10, 25)
+	//Create the head.
+	ctx.fillRect(50, 0, 50, 50)
+	//Create the torso.
+	ctx.fillRect(35, 80, 75, 75)
+	//Create the legs
+	ctx.fillRect(100, 155, 10, 45)
+	ctx.fillRect(35, 155, 10, 45)
+	
+
+	
+    </script>
+</body>
+</html>
